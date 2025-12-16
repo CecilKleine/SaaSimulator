@@ -9,7 +9,7 @@ import { isNewMonth, isNewWeek, isWeekend, getCurrentGameDate, countWeekdaysInMo
 import { generateComponentsForFeature } from '@/utils/componentGenerator';
 import { generateFeatureRequirements } from './featureRequirements';
 import { startHiringSearch, updateHiringSearches, completeHiringSearch } from './hiringSystem';
-import { RoleSubclass, EmployeeRole } from '@/types/employee';
+import { RoleSubclass, EmployeeRole, Employee } from '@/types/employee';
 import { OFFICE_TIERS } from '@/types/office';
 
 export class GameEngine {
