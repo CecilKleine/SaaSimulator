@@ -796,7 +796,7 @@ export class GameEngine {
           .filter(e => 
             !assignedEmployeeIds.has(e.id) &&
             (e.role === 'cto' || e.role === 'cofounder') &&
-            meetsSeniorityRequirement(e, requirements.minSeniority)
+            this.meetsSeniorityRequirement(e, requirements.minSeniority)
           )
           .sort((a, b) => b.productivity - a.productivity)
           .slice(0, ctoNeeded);
@@ -828,7 +828,7 @@ export class GameEngine {
             !assignedEmployeeIds.has(e.id) &&
             e.role === 'engineer' &&
             e.roleSubclass === 'frontend' &&
-            meetsSeniorityRequirement(e, requirements.minSeniority)
+            this.meetsSeniorityRequirement(e, requirements.minSeniority)
           )
           .sort((a, b) => b.productivity - a.productivity)
           .slice(0, stillNeededFrontend);
@@ -846,7 +846,7 @@ export class GameEngine {
             !assignedEmployeeIds.has(e.id) &&
             e.role === 'engineer' &&
             e.roleSubclass === 'backend' &&
-            meetsSeniorityRequirement(e, requirements.minSeniority)
+            this.meetsSeniorityRequirement(e, requirements.minSeniority)
           )
           .sort((a, b) => b.productivity - a.productivity)
           .slice(0, stillNeededBackend);
@@ -865,7 +865,7 @@ export class GameEngine {
             !assignedEmployeeIds.has(e.id) &&
             e.role === 'designer' &&
             e.roleSubclass === 'product' &&
-            meetsSeniorityRequirement(e, requirements.minSeniority)
+            this.meetsSeniorityRequirement(e, requirements.minSeniority)
           )
           .sort((a, b) => b.productivity - a.productivity)
           .slice(0, neededProduct);
@@ -884,7 +884,7 @@ export class GameEngine {
             !assignedEmployeeIds.has(e.id) &&
             e.role === 'designer' &&
             e.roleSubclass === 'visual' &&
-            meetsSeniorityRequirement(e, requirements.minSeniority)
+            this.meetsSeniorityRequirement(e, requirements.minSeniority)
           )
           .sort((a, b) => b.productivity - a.productivity)
           .slice(0, neededVisual);
