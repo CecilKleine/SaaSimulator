@@ -3,10 +3,11 @@ import { ProductState, Feature, FeatureComponent } from '@/types/product';
 import { calculateBurnRate, calculateRunway, calculateMonthlyExpenses, calculateTeamProductivity, calculateCustomerAcquisitions, calculateChurnRate, calculateRevenueFromCustomers } from './calculations';
 import { updateProductSystem } from './productSystem';
 import { updateEventSystem } from './eventSystem';
-import { updateFundingSystem } from './fundingSystem';
+import { updateFundingSystem, getRevenueRequirement } from './fundingSystem';
 import { getProductTemplate } from '@/types/productTemplates';
-import { isNewMonth, isNewWeek, getCurrentGameDate } from '@/utils/dateUtils';
+import { isNewMonth, isNewWeek } from '@/utils/dateUtils';
 import { generateComponentsForFeature } from '@/utils/componentGenerator';
+import { OFFICE_TIERS } from '@/types/office';
 
 export class GameEngine {
   private state: GameState;
@@ -279,7 +280,6 @@ export class GameEngine {
   }
 
   purchaseOffice(tier: 'coworking' | 'small' | 'medium' | 'large'): boolean {
-    const { OFFICE_TIERS } = require('@/types/office');
     const officeTier = OFFICE_TIERS[tier];
     const cost = officeTier.monthlyCost * 3; // 3 months upfront payment
     
@@ -343,7 +343,6 @@ export class GameEngine {
 
     // Check revenue requirements for Series A and above
     if (roundType !== 'seed') {
-      const { getRevenueRequirement } = require('./fundingSystem');
       const revenueRequirement = getRevenueRequirement(roundType);
       if (this.state.monthlyRevenue < revenueRequirement) {
         return false; // Revenue requirement not met

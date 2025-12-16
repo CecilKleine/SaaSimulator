@@ -37,8 +37,3 @@ export interface GameAction {
   type: 'hire' | 'fire' | 'prioritizeFeature' | 'startFundraising' | 'acceptFunding' | 'respondToEvent';
   payload: any;
 }
-
-export interface InitialGameConfig {
-  startingMoney: number;
-  difficulty: 'easy' | 'medium' | 'hard';
-}
